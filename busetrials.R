@@ -64,21 +64,21 @@ sqldf("SELECT COUNT(crime) FROM data_final WHERE crime==0")
 
 # We can see some frequency tables of the varibles to check whether there is a normality or not.
 
-hist(data$pop.density, main = "Population Density Histogram", xlab = "Population Density")
+hist(data_final$pop.density, main = "Population Density Histogram", xlab = "Population Density")
 
-hist(data$pop, main = "Population Histogram", xlab = "Population")
+hist(data_final$pop, main = "Population Histogram", xlab = "Population")
 
-hist(data$pop.change, main = "Population Change Histogram", xlab = "Population Change")
+hist(data_final$pop.change, main = "Population Change Histogram", xlab = "Population Change")
 
-hist(data$age6574, main = " Percentage of Age between 65-74 Histogram", xlab = "Percentage of Age between 65-74") #approximately normal
+hist(data_final$age6574, main = " Percentage of Age between 65-74 Histogram", xlab = "Percentage of Age between 65-74") #approximately normal
 
 # Q-Q plots
 
-qqnorm(data$pop.density)
-qqline(data$pop.density)
+qqnorm(data_final$pop.density)
+qqline(data_final$pop.density)
 
-qqnorm(data$age6574)
-qqline(data$age6574)
+qqnorm(data_final$age6574)
+qqline(data_final$age6574)
 
 shapiro.test(data_final$age6574)
 shapiro.test(data_final$pop.density)
@@ -119,6 +119,7 @@ library(corrplot)
 corrplot(cor_matrix, type="upper",
          title="Correlation Matrix of Voting Elements")
 
-# We saw the 
+# We saw the direction and strength of the linear relationship between variables.
 
-model1<-lm(price~speed+hd+ram+screen+cd+multi+premium, data=data)
+
+
