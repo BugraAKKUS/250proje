@@ -1,5 +1,5 @@
 getwd()
-
+#guncelleme
 library(readxl)
 
 data<-read_xlsx("projectdata.xlsx")
