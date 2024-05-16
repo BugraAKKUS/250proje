@@ -178,7 +178,9 @@ prop.test(x = c(sum(data_final$republican), sum(data_final$democrat)),
 # Prop 1 does not differ from prop 2 significantly.
 
 
+anova_result1 <- aov(cbind(Perot, republican, democrat) ~ 1, data = data_final)
+summary(anova_result1)
 
-
-
+manova_result <- manova(cbind(republican, democrat) ~ Perot, data = data_final)
+summary(manova_result)
 
