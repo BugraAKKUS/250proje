@@ -16,13 +16,29 @@ uscounties <- subset(uscounties, select = -state_id)
 merged_data <- merge(data_final, uscounties, by = c("county", "state"))
 #mapping
 str(merged_data)
-mapping <- function(data=merged_data, colorx=merged_data$pop.change){
-  map <- leaflet() %>%
-    addTiles() %>%
-    setView(lng = mean(data$lng), lat = mean(data$lat), zoom = 3)
-  map <- map %>%
-    addCircleMarkers(data = data, lng = ~lng, lat = ~lat, color = ~colorx, radius = 5)
+
+map <- leaflet() %>%
+  addTiles() %>%
+  setView(lng = mean(merged_data$lng), lat = mean(merged_data$lat), zoom = 3)
+map <- map %>%
+  addCircleMarkers(data = merged_data, lng = ~lng, lat = ~lat, color = ~pop.change, radius = 5)
   
-  map
-}
-mapping()
+map
+
+### demokrat mi republican mi?
+
+
+color_palette <- c(democrat = "red", republican = "blue")
+
+merged_data$marker_color <- ifelse(merged_data$democrat > merged_data$republican, color_palette["democrat"], color_palette["republican"])
+
+map <- leaflet() %>%
+  addTiles() %>%
+  setView(lng = mean(merged_data$lng), lat = mean(merged_data$lat), zoom = 3)
+
+map <- map %>%
+  addCircleMarkers(data = merged_data, lng = ~lng, lat = ~lat, color = ~marker_color, radius = 5)
+
+map
+
+
