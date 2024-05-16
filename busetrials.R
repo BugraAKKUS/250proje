@@ -173,7 +173,7 @@ prop.test(x = c(sum(data_final$republican), sum(data_final$democrat)),
           n = c(sum(data_final$pop), sum(data_final$pop)),
           alternative = "two.sided")
 
-# Two proportions are not equal.
+# Two proportions are equal.
 
 # Prop 1 does not differ from prop 2 significantly.
 
