@@ -167,3 +167,5 @@ summary(model7) #0.03458
 
 model8<-lm(republican~age6574+age75+farm,data=data_final)
 summary(model8) #0.348
+
+
