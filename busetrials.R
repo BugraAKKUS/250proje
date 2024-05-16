@@ -52,6 +52,8 @@ colSums(is.na(data_final))
 
 # After the cleaning part, we have 17 variables and 3114 observations. Data is ready to analyze.
 
+data_final<-read.csv("data_final.csv")
+
 head(data_final)
 summary(data_final)
 
@@ -84,6 +86,8 @@ shapiro.test(data_final$pop.density)
 
 
 
+
+
 # In general, variables are not normally distributed. However, in this project, we assume that they are normal and conduct
 # our hypothesis tests
 
@@ -100,3 +104,21 @@ summary(anova_model)
 
 # F value is relatively great (?) and p-value is significantly smaller than 0.05, then we can reject the null hypothesis. 
 # Population density vary significantly across different states.
+
+
+class(data_final)
+colnames(data_final)
+numeric_data<-data_final[,c(3:17)]
+cor_matrix<-cor(numeric_data)
+print(cor_matrix)
+
+
+install.packages("corrplot")
+library(corrplot)
+
+corrplot(cor_matrix, type="upper",
+         title="Correlation Matrix of Voting Elements")
+
+# We saw the 
+
+model1<-lm(price~speed+hd+ram+screen+cd+multi+premium, data=data)
