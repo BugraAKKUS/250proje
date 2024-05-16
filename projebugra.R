@@ -10,7 +10,6 @@ uscounties <- read_excel("uscounties.xlsx")
 data_final <- read_csv("data_final.csv")
 str(uscounties)
 str(data_final)
-combined_data <- merge(data_final, ,uscounties by = c("CityCity", "StateSt"))
 uscounties$state <- uscounties$state_id
 uscounties <- uscounties %>% rename(state = state_id)
 uscounties <- subset(uscounties, select = -state_id)
