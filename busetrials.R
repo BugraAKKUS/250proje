@@ -162,19 +162,23 @@ summary(model5) #0.2319
 model6 <- lm(Perot ~ white + income + college, data = data_final)
 summary(model6) #0.2989
 
-<<<<<<< HEAD
+
 model7<-lm(republican~white+income+college,data=data_final)
 summary(model7) #0.03458
 
 model8<-lm(republican~age6574+age75+farm,data=data_final)
 summary(model8) #0.348
-=======
+
 prop.test(x = c(sum(data_final$republican), sum(data_final$democrat)), 
           n = c(sum(data_final$pop), sum(data_final$pop)),
           alternative = "two.sided")
 
+# Two proportions are not equal.
 
-#güncelemem
->>>>>>> 284bb78e4e2ebd8d181230c7e67bb63c37bdab05
+# Prop 1 does not differ from prop 2 significantly.
+
+
+
+
 
 
