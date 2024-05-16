@@ -25,4 +25,4 @@ mapping <- function(data=merged_data, colorx=merged_data$pop.change){
   
   map
 }
-mapping(colorx = crime)
+mapping()
