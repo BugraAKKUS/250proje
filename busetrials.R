@@ -111,4 +111,37 @@ summary(result_anova1)
 result_anova2 <- aov(college ~ state, data = data_final)
 summary(result_anova2)
 
+#3
+result_anova3 <- aov(pop.density ~ state, data = data_final)
+summary(result_anova3)
+
+#multiple regression, trying to find best model
+
+model1 <- lm(democrat ~ pop.density + college + income, data = data_final)
+summary(model1) #0.09 not good
+
+model2 <- lm(democrat ~ age6574 + college + income, data = data_final)
+summary(model2) #0.06
+
+model3 <- lm(democrat ~ pop + college + income, data = data_final)
+summary(model3) #0.2319
+
+model4 <- lm(democrat ~ white + college + sqrt(income), data = data_final)
+summary(model4) #0.2374
+
+
+data_final$income_ratio <- data_final$income/1000
+summary(data_final)
+
+model5 <- lm(democrat ~ white + college + income_ratio, data = data_final)
+summary(model5) #0.2319
+
+model6 <- lm(Perot ~ white + income + college, data = data_final)
+summary(model6) #0.2989
+
+
+
+
+
+
 
