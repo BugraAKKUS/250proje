@@ -1,7 +1,7 @@
 getwd()
 #guncelleme
 library(readxl)
-
+data_final <- read.csv("data_final.csv")
 data<-read_xlsx("projectdata.xlsx")
 
 head(data)
@@ -100,3 +100,15 @@ summary(anova_model)
 
 # F value is relatively great (?) and p-value is significantly smaller than 0.05, then we can reject the null hypothesis. 
 # Population density vary significantly across different states.
+
+#anova
+#1
+#there is a significant difference in average income among counties in different states.
+result_anova1 <- aov(income ~ state, data = data_final)
+summary(result_anova1)
+
+#2
+result_anova2 <- aov(college ~ state, data = data_final)
+summary(result_anova2)
+
+
