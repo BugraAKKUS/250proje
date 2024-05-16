@@ -21,7 +21,6 @@ summary(model)$r.squared
 result_anova <- aov(income ~ state, data = project)
 summary(result_anova)
 
-
 model <- lm(crime ~ pop.density + college + income, data = project)
 summary(model)
 # the model suggests that population density, percentage of college-educated individuals, 
