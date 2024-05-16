@@ -5,7 +5,7 @@ libraries <- c("ggplot2","sf","rworldmap","tidyverse","magrittr",
                "maps","mapdata","RgoogleMaps","lubridate","rnaturalearth","dplyr","rnaturalearthdata","RColorBrewer","httr")
 lapply(libraries, require, character.only = TRUE)
 library(dplyr)
-
+#
 uscounties <- read_excel("uscounties.xlsx")
 data_final <- read_csv("data_final.csv")
 str(uscounties)
