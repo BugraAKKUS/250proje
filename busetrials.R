@@ -1,7 +1,7 @@
 getwd()
 #guncelleme
 library(readxl)
-
+data_final <- read.csv("data_final.csv")
 data<-read_xlsx("projectdata.xlsx")
 
 head(data)
@@ -106,6 +106,7 @@ summary(anova_model)
 # Population density vary significantly across different states.
 
 
+
 class(data_final)
 colnames(data_final)
 numeric_data<-data_final[,c(3:17)]
@@ -121,5 +122,16 @@ corrplot(cor_matrix, type="upper",
 
 # We saw the direction and strength of the linear relationship between variables.
 
+
+
+#anova
+#1
+#there is a significant difference in average income among counties in different states.
+result_anova1 <- aov(income ~ state, data = data_final)
+summary(result_anova1)
+
+#2
+result_anova2 <- aov(college ~ state, data = data_final)
+summary(result_anova2)
 
 
