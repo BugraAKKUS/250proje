@@ -139,7 +139,9 @@ summary(model5) #0.2319
 model6 <- lm(Perot ~ white + income + college, data = data_final)
 summary(model6) #0.2989
 
-
+prop.test(x = c(sum(data_final$republican), sum(data_final$democrat)), 
+          n = c(sum(data_final$pop), sum(data_final$pop)),
+          alternative = "two.sided")
 
 
 
