@@ -1,5 +1,5 @@
 getwd()
-#guncelleme
+#guncelleme2
 library(readxl)
 data_final <- read.csv("data_final.csv")
 data<-read_xlsx("projectdata.xlsx")
