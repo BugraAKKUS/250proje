@@ -144,6 +144,6 @@ prop.test(x = c(sum(data_final$republican), sum(data_final$democrat)),
           alternative = "two.sided")
 
 
-#güncelememe
+#güncelemem
 
 
