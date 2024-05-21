@@ -184,3 +184,106 @@ summary(anova_result1)
 manova_result <- manova(cbind(republican, democrat) ~ Perot, data = data_final)
 summary(manova_result)
 
+# Fit multiple linear regression models for party preference
+democrat_model <- lm(democrat ~ pop.density + income + white + black, data = data_final)
+republican_model <- lm(republican ~ pop.density + income + white + black, data = data_final)
+perot_model <- lm(Perot ~ pop.density + income + white + black, data = data_final)
+#college and income have similar effects so it can cause multicollinearity, we discard college
+# Summaries of the models
+summary(democrat_model)
+summary(republican_model)
+summary(perot_model)
+
+# Fit a multiple linear regression model for voter turnout
+turnout_model <- lm(turnout ~ pop.density + income + college + white + black, data = data_final)
+
+# Summary of the model
+summary(turnout_model)
+
+democrat_model <- lm(democrat ~ pop.density + log(income) + white + black, data = data_final)
+summary(democrat_model) #0.2774
+
+democrat_model <- lm(democrat ~ pop.density + log(income) + log(white) + black, data = data_final)
+summary(democrat_model) #0.2821
+
+democrat_model <- lm(democrat ~ pop.density + log(income) + log(white) + sqrt(black), data = data_final)
+summary(democrat_model) #0.2935
+
+democrat_model <- lm(democrat ~ sqrt(pop.density) + log(income) + log(white) + sqrt(black), data = data_final)
+summary(democrat_model) #0.3268
+
+democrat_model <- lm(democrat ~ sqrt(pop.density) + sqrt(income) + sqrt(white) + sqrt(black), data = data_final)
+summary(democrat_model) #0.3149
+
+democrat_model <- lm(democrat ~ sqrt(sqrt(pop.density)) + log(income) + log(white) + sqrt(black), data = data_final)
+summary(democrat_model) #0.36 is it okey?
+
+democrat_model <- lm(democrat ~ sqrt(sqrt(pop.density)) + log(income) + log(white) + sqrt(sqrt(black)), data = data_final)
+summary(democrat_model) #0.3647 
+
+democrat_model <- lm(democrat ~ sqrt(sqrt(pop.density)) + sqrt(log(income)) + sqrt(log(white)) + sqrt(sqrt(black)), data = data_final)
+summary(democrat_model) #0.3659
+
+
+model <- lm(republican ~ white, data = data_final)
+summary(model) #anlamlı
+
+model <- lm(republican ~ black, data = data_final)
+summary(model)
+
+model <- lm(republican ~ pop.density, data = data_final)
+summary(model)
+
+model <- lm(republican ~ age6574, data = data_final)
+summary(model) #anlamlı
+
+model <- lm(republican ~ age75, data = data_final)
+summary(model) #anlamlı
+
+model <- lm(republican ~ crime, data = data_final)
+summary(model) #anlamlı
+
+model <- lm(republican ~ college, data = data_final)
+summary(model)
+
+model <- lm(republican ~ income, data = data_final)
+summary(model) #anlamlı
+
+model <- lm(republican ~ farm, data = data_final)
+summary(model) #anlamlı
+
+model <- lm(republican ~ turnout, data = data_final)
+summary(model)
+
+republican_model <- lm(republican ~ white + age6574 + crime + income + farm, data = data_final)
+summary(republican_model) #0.0579
+
+republican_model <- lm(republican ~ white + age6574 + crime + log(income) + farm, data = data_final)
+summary(republican_model) #0.06253
+
+republican_model <- lm(republican ~ log(white) + age6574 + crime + log(income) + farm, data = data_final)
+summary(republican_model) #0.07142
+
+republican_model <- lm(republican ~ log(white) + age6574 + crime + log(income) + farm, data = data_final)
+summary(republican_model) #?????????
+
+anova_turnout_model <- aov(turnout ~ state, data = data_final)
+summary(anova_turnout_model) # oy oranları eyaletlere göre oldukça farklı
+
+
+# Fit a multiple linear regression model
+full_model <- lm(crime ~ pop.density + income + age6574 + age75 + college + white + black, data = data_final)
+
+# Summary of the full model
+summary(full_model)
+
+# Stepwise regression to find the best subset of predictors
+step_model <- step(full_model, direction = "both")
+
+# Summary of the stepwise model
+summary(step_model) #pelin hocaya outpuların anlamlarını sor!
+
+perot_model <- lm(Perot ~ pop.density + income + white + black, data = data_final)
+
+
+
