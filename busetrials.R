@@ -285,5 +285,5 @@ summary(step_model) #pelin hocaya outpuların anlamlarını sor!
 
 perot_model <- lm(Perot ~ pop.density + income + white + black, data = data_final)
 
-
+#ANOVA repub. democ. perot kıyaslarken birkaç eyalet seç
 
