@@ -287,3 +287,36 @@ perot_model <- lm(Perot ~ pop.density + income + white + black, data = data_fina
 
 #ANOVA repub. democ. perot kıyaslarken birkaç eyalet seç
 
+#democratla ilişkisi iyi olan bir variableın en çok olduğu eyaletlerin oy karşılaştırması
+
+cor(data_final$democrat, data_final$college) #-0.113
+cor(data_final$democrat, data_final$income) #-0.227
+cor(data_final$democrat, data_final$white) #-0.458
+cor(data_final$democrat, data_final$black) #0.448
+
+#şimdi en yüksek black oranına sahip 5 state'e bakcam
+library(dplyr)
+top_5_states <- data_final %>%
+  arrange(desc(black)) %>%
+  distinct(state, .keep_all = TRUE) %>%
+  slice(1:5) %>%
+  select(state, black)
+top_5_state_names <- top_5_states$state
+
+filtered_data <- data_final %>%
+  filter(state %in% top_5_state_names)
+
+anova_result <- aov(democrat ~ state, data = filtered_data)
+summary(anova_result) #p value 0.00264<0.05 yani oy oranları significantly eşit değil
+
+library(ggplot2)
+ggplot(filtered_data, aes(x = state, y = democrat)) +
+  geom_boxplot() +
+  labs(title = "Democrat Oranlarının Eyaletlere Göre Dağılımı",
+       x = "Eyalet",
+       y = "Democrat Oranı")
+
+
+
+
+
